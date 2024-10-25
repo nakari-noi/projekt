@@ -1,14 +1,27 @@
-//src/app/auth/prihlasenie/page.tsx
-import Typography from '@mui/material/Typography';
+'use client';
 
-export const metadata = {title: "Prihlasenie| zoska snap"}
+import { signIn } from 'next-auth/react';
+import { Button, Container, Typography } from '@mui/material';
+import { Google as GoogleIcon } from '@mui/icons-material';
 
-export default function SingIn() {
+export default function Prihlasenie() {
+  const handleGoogleSignIn = async () => {
+    await signIn('google');
+  };
+
   return (
-
-      <Typography > prihlasenie</Typography>
-
+    <Container maxWidth="sm" style={{ marginTop: '2rem', textAlign: 'center' }}>
+      <Typography variant="h4" gutterBottom>
+        Sign in to your account
+      </Typography>
+      <Button
+        variant="contained"
+        startIcon={<GoogleIcon />}
+        onClick={handleGoogleSignIn}
+        style={{ marginTop: '2rem' }}
+      >
+        Sign in with Google
+      </Button>
+    </Container>
   );
 }
-
-
